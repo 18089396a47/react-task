@@ -15,16 +15,64 @@
   width: 100%;
 }
 
-.calendar table {
+.calendar .nav {
+  text-align: center;
+}
+
+.calendar .nav span {
+  display: inline-block;
+  width: calc(100% - 60px);
+  border-bottom: 1px solid black;
+}
+
+.calendar .nav-button {
+  display: inline-block;
+  padding: 5px;
+  cursor: pointer;
+  border: 1px solid black;
+  border-radius: 2px;
+  line-height: 10px;
+  margin-top: 5px;
+}
+
+.calendar .nav-button.left {
+  margin-right: 3px;
+}
+
+.calendar .nav-button.right {
+  margin-left: 3px;
+}
+
+.calendar .table {
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 10px;
+  padding: 2px;
 }
 
-.calendar thead td {
+.calendar table {
+  border-spacing: 0;
+}
+
+.calendar td {
+  text-align: center;
+  background: #ccc;
+}
+
+.calendar tr {
+  background: #aaa;
+}
+
+.calendar thead th {
+  padding: 2px;
   border-left: 1px solid black;
+  width: 45px;
 }
 
-.calendar thead td:first-child {
-  border: none;
+.calendar thead th:first-child {
+  border-left: none;
+}
+
+.calendar.hidden {
+  display: none;
 }
