@@ -12,7 +12,7 @@ var Navigation = React.createClass({
     return (
       <div className="nav">
         <div className="nav-button left">&lt;</div>
-        <span>{this.state.monthNames[this.props.month]}</span>
+        <span>{this.state.monthNames[this.props.month] + ', ' + this.props.year}</span>
         <div className="nav-button right">&gt;</div>
       </div>
     );
