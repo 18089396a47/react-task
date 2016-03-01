@@ -48,7 +48,7 @@
   border: 1px solid black;
   border-radius: 10px;
   margin-top: 10px;
-  padding: 2px;
+  padding: 3px;
 }
 
 .calendar table {
@@ -64,6 +64,10 @@
 .calendar td.currentMonth {
   font-weight: bold;
   color: black;
+}
+
+.calendar td.currentMonth span {
+  cursor: pointer;
 }
 
 .calendar tr {

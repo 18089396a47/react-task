@@ -14,8 +14,8 @@ var Calendar = React.createClass({
       } else {
         this.setState({date: new Date(year, month + 1, 1)});
       }
+      e.stopPropagation();
     }
-    e.stopPropagation();
   },
   getInitialState: function() {
     return {
@@ -27,9 +27,9 @@ var Calendar = React.createClass({
     return ( < div className = {
         classes
       } >
-      < Input / >
+      < Input day={this.props.day} / >
       <div onClick={this.clickSlide}>
-        < Table date={this.state.date} / >
+        < Table date={this.state.date} daySelect={this.props.daySelect} / >
       </div>
       < /div>);
     }

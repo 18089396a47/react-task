@@ -4,6 +4,12 @@ var GetWeeks = require('./getweeks');
 var classNames = require('classnames');
 
 var TBody = React.createClass({
+  daySelect: function(key, e) {
+    if (key.current) {
+      this.props.daySelect(key, e);
+    }
+    e.stopPropagation();
+  },
   render: function() {
     var date = this.props.date;
     var dates = GetDates(
@@ -19,15 +25,15 @@ var TBody = React.createClass({
               {week.map(function(day) {
                 var dayStyle = classNames({currentMonth: day.current});
                 return (
-                  <td className={dayStyle}>
-                    {day.getDate()}
+                  <td className={dayStyle} key={day}>
+                    <span onClick={this.daySelect.bind(this, day)}>{day.getDate()}</span>
                   </td>
                 );
-              })
+              }, this)
               }
             </tr>
           );
-        })
+        }, this)
         }
       </tbody>
     );
