@@ -11,7 +11,7 @@ var Calendar = React.createClass({
             classes
           } >
           < Input / >
-          < Table / >
+          < Table date={new Date()} / >
           < /div>);
         }
       });

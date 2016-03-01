@@ -57,6 +57,12 @@
 .calendar td {
   text-align: center;
   background: #ccc;
+  color: grey;
+}
+
+.calendar td.currentMonth {
+  font-weight: bold;
+  color: black;
 }
 
 .calendar tr {

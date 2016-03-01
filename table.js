@@ -5,7 +5,7 @@ var TBody = require('./tbody')
 var Table = React.createClass({
   render: function() {
     return ( < div className = "table" >
-      < Navigation / >
+      < Navigation month={this.props.date.getMonth()} / >
       < table >
       < thead >
       < tr >
@@ -13,7 +13,7 @@ var Table = React.createClass({
       /th > < th > WED < /
       th > < th > THU < /th >  < th > FRI < /th > < th > SAT <
       /th >   < /
-      tr > < /thead > < TBody / >
+      tr > < /thead > < TBody date={this.props.date} / >
       < /table > < /div >
     );
   }
