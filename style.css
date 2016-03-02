@@ -4,6 +4,14 @@
   box-sizing: border-box;
 }
 
+.date-list {
+  padding: 30px;
+}
+
+.date-list li {
+  list-style: none;
+}
+
 .calendar {
   display: inline-block;
   height: 200px;

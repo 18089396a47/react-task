@@ -4,10 +4,9 @@ var Input = React.createClass({
   render: function() {
     var dayStr = '';
     if (this.props.day) {
-      dayStr = this.props.day.getDate() + '.' + (this.props.day.getMonth() + 1) + '.' + this.props.day.getFullYear()
+      dayStr = this.props.day.toLocaleString('ru', {day:'numeric',month:'numeric',year:'numeric'});
     }
-    return ( < input type = "text" readOnly
-      value={dayStr} / > );
+    return ( < input type = "text" readOnly value={dayStr} / > );
   }
 });
 

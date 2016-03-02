@@ -1,25 +1,55 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Calendar = require('./calendar').Calendar;
+var Calendar = require('./calendar');
+var DateList = require('./datelist');
 
 var Date = React.createClass({
   getInitialState: function() {
     return {
-      startDate: undefined
+      startDate: undefined,
+      endDate: undefined,
+      intervals: []
     };
   },
-  clickStartDate: function(key, e) {
-    this.setState({startDate: key});
+  checkDate: function() {
+    return true;
   },
+  clickStartDate: function(key, e) {
+    if (this.isHidden) {
+      this.setState({startDate: key});
+      ReactDOM.findDOMNode(this.refs.endCalendar).classList.toggle('hidden');
+      this.isHidden = !this.isHidden;
+    }
+  },
+  clickEndDate: function(key, e) {
+    if (!this.checkDate()) {
+      return;
+    }
+    if (!this.isHidden) {
+      this.setState({endDate: key});
+      setTimeout(this.endSelection, 1000);
+    }
+  },
+  endSelection: function() {
+    this.state.intervals.push({
+      start: this.state.startDate,
+      end: this.state.endDate
+    });
+    this.setState({startDate: null, endDate: null});
+    ReactDOM.findDOMNode(this.refs.endCalendar).classList.toggle('hidden');
+    this.isHidden = !this.isHidden;
+  },
+  isHidden: true,
   render: function() {
     return (
       < div >
-        <div>
-          < Calendar class = "visible" daySelect={this.clickStartDate} day={this.state.startDate} / >
+        <div className="calendar" ref="startCalendar">
+          < Calendar daySelect={this.clickStartDate} day={this.state.startDate} / >
         </div>
-        <div>
-          < Calendar class = "hidden" / >
+        <div className="calendar hidden" ref="endCalendar">
+          < Calendar daySelect={this.clickEndDate} day={this.state.endDate} class={this.state.isHidden} / >
         </div>
+        <DateList intervals={this.state.intervals} />
       < /div>
     );
   }

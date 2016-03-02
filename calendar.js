@@ -23,10 +23,8 @@ var Calendar = React.createClass({
     };
   },
   render: function() {
-    var classes = classNames(this.props.class, 'calendar');
-    return ( < div className = {
-        classes
-      } >
+    var classes = classNames({'hidden': this.props.class}, 'calendar');
+    return ( < div >
       < Input day={this.props.day} / >
       <div onClick={this.clickSlide}>
         < Table date={this.state.date} daySelect={this.props.daySelect} / >
@@ -35,4 +33,4 @@ var Calendar = React.createClass({
     }
 });
 
-module.exports.Calendar = Calendar;
+module.exports = Calendar;
