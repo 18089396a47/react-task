@@ -44,10 +44,14 @@ var Date = React.createClass({
     return (
       < div >
         <div className="calendar" ref="startCalendar">
-          < Calendar daySelect={this.clickStartDate} day={this.state.startDate} / >
+          < Calendar daySelect={this.clickStartDate} initDate={this.state.initDate} day={this.state.startDate} / >
         </div>
         <div className="calendar hidden" ref="endCalendar">
-          < Calendar daySelect={this.clickEndDate} day={this.state.endDate} class={this.state.isHidden} / >
+          < Calendar daySelect={this.clickEndDate}
+            initDate={this.state.startDate}
+            day={this.state.endDate}
+            startDay={this.state.startDate}
+            class={this.state.isHidden} / >
         </div>
         <DateList intervals={this.state.intervals} />
       < /div>

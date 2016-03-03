@@ -3,9 +3,30 @@ var Navigation = require('./navigation');
 var TBody = require('./tbody')
 
 var Table = React.createClass({
+  getInitialState: function() {
+    return {
+      initDate: false
+    };
+  },
   render: function() {
+    var initDate;
+    if (this.props.startDay) {
+      if (!this.state.initDate) {
+        if (this.props.initDate) {
+          initDate = this.props.initDate;
+          this.state.initDate = true;
+        } else {
+          initDate = this.props.date;
+        }
+      } else {
+        initDate = this.props.date;
+      }
+    } else {
+      initDate = this.props.date;
+      this.state.initDate = false;
+    }
     return ( < div className = "table" >
-        < Navigation month={this.props.date.getMonth()} year={this.props.date.getFullYear()} / >
+        < Navigation month={initDate.getMonth()} year={initDate.getFullYear()} / >
         < table >
           < thead >
             < tr >
@@ -18,7 +39,7 @@ var Table = React.createClass({
               < th > SAT < /th >
             < /tr >
           < /thead >
-          < TBody date={this.props.date} daySelect={this.props.daySelect} / >
+          < TBody date={initDate} startDay={this.props.startDay} daySelect={this.props.daySelect} / >
         < /table >
       < /div >
     );

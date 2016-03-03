@@ -5,7 +5,7 @@ var classNames = require('classnames');
 
 var TBody = React.createClass({
   daySelect: function(key, e) {
-    if (key.current) {
+    if (key.current === 'true') {
       this.props.daySelect(key, e);
     }
     e.stopPropagation();
@@ -16,14 +16,17 @@ var TBody = React.createClass({
       new Date(date.getFullYear(), date.getMonth(), 1),
       new Date(date.getFullYear(), date.getMonth() + 1, 0)
     );
-    var weeks = GetWeeks(dates);
+    var weeks = GetWeeks(dates, this.props.startDay);
     return (
       <tbody>
         {weeks.map(function(week) {
           return (
             <tr>
               {week.map(function(day) {
-                var dayStyle = classNames({currentMonth: day.current});
+                var dayStyle = classNames({
+                  'current-month': day.current === 'true',
+                  'disabled-day': day.current === 'disabled'
+              });
                 return (
                   <td className={dayStyle} key={day}>
                     <span onClick={this.daySelect.bind(this, day)}>{day.getDate()}</span>

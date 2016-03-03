@@ -27,7 +27,7 @@ var Calendar = React.createClass({
     return ( < div >
       < Input day={this.props.day} / >
       <div onClick={this.clickSlide}>
-        < Table date={this.state.date} daySelect={this.props.daySelect} / >
+        < Table initDate={this.props.initDate} date={this.state.date} startDay={this.props.startDay} daySelect={this.props.daySelect} / >
       </div>
       < /div>);
     }

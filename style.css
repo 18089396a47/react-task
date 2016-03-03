@@ -66,15 +66,19 @@
 .calendar td {
   text-align: center;
   background: #ccc;
-  color: grey;
+  color: #808080;
 }
 
-.calendar td.currentMonth {
+.calendar td.disabled-day {
+  color: #222;
+}
+
+.calendar td.current-month {
   font-weight: bold;
   color: black;
 }
 
-.calendar td.currentMonth span {
+.calendar td.current-month span {
   cursor: pointer;
 }
 

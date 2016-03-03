@@ -1,7 +1,7 @@
 var GetDates = require('./getdates');
 var DAY_COUNT = 42;
 
-module.exports = function(curMonth) {
+module.exports = function(curMonth, selectedDate) {
   var year = curMonth[0].getFullYear(),
     month = curMonth[0].getMonth(),
     firstDay = curMonth[0].getDay();
@@ -14,13 +14,21 @@ module.exports = function(curMonth) {
     new Date(year, month + 1, DAY_COUNT - curMonth.length - prevMonth.length)
   );
   prevMonth.forEach(function(day, i) {
-    day.current = false;
+    day.current = 'false';
   });
   curMonth.forEach(function(day, i) {
-    day.current = true;
+    if (!selectedDate) {
+      day.current = 'true';
+    } else {
+      if (selectedDate <= day) {
+        day.current = 'true';
+      } else {
+        day.current = 'disabled';
+      }
+    }
   });
   nextMonth.forEach(function(day, i) {
-    day.current = false;
+    day.current = 'false';
   });
   var all = prevMonth.concat(curMonth.concat(nextMonth));
   var weeks = [
