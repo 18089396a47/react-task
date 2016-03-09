@@ -1,18 +1,19 @@
 var React = require('react');
+var MONTH_NAMES = require('../constants').MONTH_NAMES;
 
 var Navigation = React.createClass({
   getInitialState: function() {
     return {
-      monthNames: ["January", "February", "March", "April", "May", "June",
-        "July", "August", "September", "October", "November", "December"
-      ]
+      monthNames: MONTH_NAMES
     };
   },
   render: function() {
     return (
       <div className="nav">
         <div className="nav-button left">&lt;</div>
-        <span>{this.state.monthNames[this.props.month] + ', ' + this.props.year}</span>
+        <span className="nav-month">{`
+          ${this.state.monthNames[this.props.month]}, ${this.props.year}
+        `}</span>
         <div className="nav-button right">&gt;</div>
       </div>
     );

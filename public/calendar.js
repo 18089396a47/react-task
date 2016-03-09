@@ -2,7 +2,6 @@ var React = require('react');
 var Input = require('./input');
 var Table = require('./table');
 var classNames = require('classnames');
-require('./style.css')
 
 var Calendar = React.createClass({
   clickSlide: function(e) {
@@ -14,7 +13,6 @@ var Calendar = React.createClass({
       } else {
         this.setState({date: new Date(year, month + 1, 1)});
       }
-      e.stopPropagation();
     }
   },
   getInitialState: function() {
@@ -24,11 +22,12 @@ var Calendar = React.createClass({
   },
   render: function() {
     var classes = classNames({'hidden': this.props.class}, 'calendar');
-    return ( < div >
-      < Input day={this.props.day} / >
-      <div onClick={this.clickSlide}>
-        < Table initDate={this.props.initDate} date={this.state.date} startDay={this.props.startDay} daySelect={this.props.daySelect} / >
-      </div>
+    return (
+      < div >
+        < Input day={this.props.day} / >
+        <div onClick={this.clickSlide}>
+          < Table initDate={this.props.initDate} date={this.state.date} startDay={this.props.startDay} daySelect={this.props.daySelect} / >
+        </div>
       < /div>);
     }
 });

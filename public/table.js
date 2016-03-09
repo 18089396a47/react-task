@@ -1,6 +1,6 @@
 var React = require('react');
 var Navigation = require('./navigation');
-var TBody = require('./tbody')
+var TableBody = require('./table-body')
 
 var Table = React.createClass({
   getInitialState: function() {
@@ -39,7 +39,7 @@ var Table = React.createClass({
               < th > SAT < /th >
             < /tr >
           < /thead >
-          < TBody date={initDate} startDay={this.props.startDay} daySelect={this.props.daySelect} / >
+          < TableBody date={initDate} startDay={this.props.startDay} daySelect={this.props.daySelect} / >
         < /table >
       < /div >
     );

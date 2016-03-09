@@ -1,19 +1,19 @@
-var GetDates = require('./getdates');
-var DAY_COUNT = 42;
+var getDates = require('./get-dates');
+var DAY_COUNT = require('../constants').DAY_COUNT;
 
 module.exports = function(curMonth, selectedDate) {
   var year = curMonth[0].getFullYear(),
     month = curMonth[0].getMonth(),
     firstDay = curMonth[0].getDay();
-  var prevMonth = GetDates(
-    new Date(year, month, -firstDay + 1),
+  var prevMonth = getDates(
+    new Date(year, month, 1 - firstDay),
     new Date(year, month, 0)
   );
-  var nextMonth = GetDates(
+  var nextMonth = getDates(
     new Date(year, month + 1, 1),
     new Date(year, month + 1, DAY_COUNT - curMonth.length - prevMonth.length)
   );
-  prevMonth.forEach(function(day, i) {
+  prevMonth.forEach(function(day) {
     day.current = 'false';
   });
   curMonth.forEach(function(day, i) {

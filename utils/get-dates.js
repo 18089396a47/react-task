@@ -1,10 +1,6 @@
-Date.prototype.addDays = function(days) {
-  var date = new Date(this.valueOf())
-  date.setDate(date.getDate() + days);
-  return date;
-}
+require('./date-prototype');
 
-module.exports = function getDates(startDate, stopDate) {
+module.exports = function(startDate, stopDate) {
   var dateArray = new Array();
   var currentDate = startDate;
   while (currentDate <= stopDate) {

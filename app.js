@@ -1,9 +1,11 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var Calendar = require('./calendar');
-var DateList = require('./datelist');
+var Calendar = require('./public/calendar');
+var DateList = require('./public/datelist');
+require('./styles/reset.css');
+require('./styles/calendar.css');
 
-var Date = React.createClass({
+var DatePicker = React.createClass({
   getInitialState: function() {
     return {
       startDate: undefined,
@@ -26,8 +28,7 @@ var Date = React.createClass({
       return;
     }
     if (!this.isHidden) {
-      this.setState({endDate: key});
-      setTimeout(this.endSelection, 1000);
+      this.setState({endDate: key}, this.endSelection);
     }
   },
   endSelection: function() {
@@ -50,8 +51,7 @@ var Date = React.createClass({
           < Calendar daySelect={this.clickEndDate}
             initDate={this.state.startDate}
             day={this.state.endDate}
-            startDay={this.state.startDate}
-            class={this.state.isHidden} / >
+            startDay={this.state.startDate} / >
         </div>
         <DateList intervals={this.state.intervals} />
       < /div>
@@ -59,4 +59,4 @@ var Date = React.createClass({
   }
 });
 
-ReactDOM.render( < Date / > , document.getElementById('calendar'));
+ReactDOM.render( < DatePicker / > , document.getElementById('calendar'));
