@@ -4,7 +4,7 @@ var getWeeks = require('../utils/get-weeks');
 var classNames = require('classnames');
 var DATE_TYPE = require('../constants').DATE_TYPE;
 
-var TableBody = React.createClass({
+var MonthDates = React.createClass({
   daySelect: function(key, e) {
     if (key.current === DATE_TYPE.CURRENT) {
       this.props.daySelect(key, e);
@@ -42,4 +42,4 @@ var TableBody = React.createClass({
   }
 });
 
-module.exports = TableBody;
+module.exports = MonthDates;

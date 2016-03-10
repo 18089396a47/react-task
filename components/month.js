@@ -1,13 +1,13 @@
 var React = require('react');
 var Navigation = require('./navigation');
-var TableBody = require('./table-body');
+var MonthDates = require('./month-dates');
 var DAY_NAMES = require('../constants').DAY_NAMES;
 
-var Table = React.createClass({
+var Month = React.createClass({
   render: function() {
     var initDate = this.props.date;
     return (
-      <div className = "table">
+      <div className="month">
         <Navigation
           month={initDate.getMonth()}
           year={initDate.getFullYear()}
@@ -21,11 +21,11 @@ var Table = React.createClass({
               })}
             </tr>
           </thead>
-          <TableBody date={initDate} startDay={this.props.startDay} daySelect={this.props.daySelect} />
+          <MonthDates date={initDate} startDay={this.props.startDay} daySelect={this.props.daySelect} />
         </table>
       </div>
     );
   }
 });
 
-module.exports = Table;
+module.exports = Month;

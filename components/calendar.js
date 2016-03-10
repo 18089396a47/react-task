@@ -1,6 +1,6 @@
 var React = require('react');
-var Input = require('./input');
-var Table = require('./table');
+var DateInput = require('./date-input');
+var Table = require('./month');
 var classNames = require('classnames');
 
 var Calendar = React.createClass({
@@ -28,7 +28,7 @@ var Calendar = React.createClass({
   render: function() {
     return (
       <div>
-        <Input day={this.props.day} />
+        <DateInput day={this.props.day} />
         <Table
           initDate={this.props.initDate}
           date={this.state.date}
