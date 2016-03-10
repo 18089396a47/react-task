@@ -1,4 +1,5 @@
 var React = require('react');
+var toLocaleString = require('../utils/to-locale-string');
 
 var DateList = React.createClass({
   render: function() {
@@ -7,9 +8,8 @@ var DateList = React.createClass({
         {this.props.intervals.map(function(interval) {
           return (
             <li key={Math.random()}>{`
-              ${interval.start.toLocaleString('ru', {day:'numeric',month:'numeric',year:'numeric'})} -
-              ${interval.end.toLocaleString('ru', {day:'numeric',month:'numeric',year:'numeric'})}
-            `}</li>
+              ${toLocaleString(interval.start)} - ${toLocaleString(interval.end)}
+            `.trim()}</li>
           );
         })}
       </ul>

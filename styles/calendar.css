@@ -89,7 +89,3 @@
 .calendar thead th:first-child {
   border-left: none;
 }
-
-.calendar.hidden {
-  display: none;
-}

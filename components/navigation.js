@@ -7,14 +7,17 @@ var Navigation = React.createClass({
       monthNames: MONTH_NAMES
     };
   },
+  clickSlide: function(e) {
+    this.props.clickSlide(this, e);
+  },
   render: function() {
     return (
       <div className="nav">
-        <div className="nav-button left">&lt;</div>
+        <div className="nav-button left" ref="navLeft" onClick={this.clickSlide}>&lt;</div>
         <span className="nav-month">{`
           ${this.state.monthNames[this.props.month]}, ${this.props.year}
-        `}</span>
-        <div className="nav-button right">&gt;</div>
+        `.trim()}</span>
+        <div className="nav-button right" ref="navRight" onClick={this.clickSlide}>&gt;</div>
       </div>
     );
   }
